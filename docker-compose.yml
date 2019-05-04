@@ -11,7 +11,7 @@ services:
     depends_on:
       - "goservice"
     links:
-      goservice:goservice
+      - goservice:goservice
 networks:
   web:
     driver: bridge
