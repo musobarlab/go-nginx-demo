@@ -1,17 +1,26 @@
 version: "3.6"
 services:
-  goservice:
-    build: "./service"
+  goservice1:
+    build: "./service1"
     ports:
-      - "9000"
+      - "9000:9000"
+    networks:
+      - web
+  goservice2:
+    build: "./service2"
+    ports:
+      - "9001:9001"
+    networks:
+      - web
   nginx:
     build: "./nginx"
     ports:
       - "80:80"
     depends_on:
-      - "goservice"
-    links:
-      - goservice:goservice
+      - goservice1
+      - goservice2
+    networks:
+      - web
 networks:
   web:
     driver: bridge
