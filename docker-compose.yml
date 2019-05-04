@@ -10,6 +10,8 @@ services:
       - "80:80"
     depends_on:
       - "goservice"
+    links:
+      goservice:goservice
 networks:
   web:
     driver: bridge
